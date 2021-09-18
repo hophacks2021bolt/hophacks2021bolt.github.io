@@ -1,7 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {Home, Dashboard} from './pages';
+
+import {Home, Survey, Dashboard} from './pages';
+
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -9,6 +12,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={() => <Home />} />
+          <Route path="/survey" exact component={() => <Survey />} />
           <Route path="/dashboard" exact component={() => <Dashboard />} />
         </Switch>
       </Router>
