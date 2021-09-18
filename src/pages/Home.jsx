@@ -1,6 +1,7 @@
 import React from "react";
 import '../App.css';
 import './Home.css'
+import Button from "react-bootstrap/Button";
 
 
 function Home() {
@@ -12,7 +13,6 @@ function Home() {
         <p id="description">a worldwide energy comparison tool</p>
         <div className="row-md-2">
           <div className="col-6" id="surveyDiv">
-
           </div>
           <div className="col-6" id="dashboardDiv">
           </div>

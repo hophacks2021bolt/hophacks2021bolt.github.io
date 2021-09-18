@@ -2,10 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
 
 
-.App {
-  text-align: center;
-}
-
 .Splash-page {
   background-image: linear-gradient(to bottom right, #51CD55, #1FBDA9);
   color: #F5F4F6;
