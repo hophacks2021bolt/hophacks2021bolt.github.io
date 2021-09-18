@@ -35,14 +35,14 @@
   border: none !important;
   transition-property: transform;
   transition-duration: 0.3s;
-
+  margin: 5px;
+  box-shadow: none;
 }
-.button:hover, .button:focus, .button:active {
+.button:hover {
   background-color: #A8E541 !important;
   color:#030D2E !important;
   border: none !important;
   transform: scale(1.1);
-  box-shadow: none;
 
 }
 
@@ -53,5 +53,7 @@
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
   font-family: 'Barlow';
+  padding: 20px;
 
 }
+

@@ -9,7 +9,8 @@ import UnitedStatesChart from "./UnitedStatesChart";
 
 
 function Dashboard() {
-  const [country, setCountry] = useState("");
+  const [countryHover, setCountryHover] = useState("");
+  const [countryClick, setCountryClick] = useState("");
   const [isUS, setIsUs] = useState(false);
   const [countryCode, setCode] = useState("");
 
@@ -24,12 +25,20 @@ function Dashboard() {
     
     <div className="dashboard">
       <div className="left w50">
-        {returnIsUS()?<Button className="button" onClick={() => {setIsUs(false)}}>Exit US</Button>:null}
-        {returnIsUS()?<UnitedStatesChart setCountryContent={setCountry} setCountryCode={setCode}/>:<MapChart setCountryContent={setCountry} setCountryCode={setCode} isUSA={setIsUs}/>}
-        {country}
+        <ButtonToolbar>
+            <ButtonGroup>
+                <Button className="button" onClick={() => {setCountryClick(""); setCode("")}}>Clear</Button>
+            </ButtonGroup>
+            <ButtonGroup>
+                {returnIsUS()?<Button className="button" onClick={() => {setIsUs(false)}}>Exit US</Button>:null}
+            </ButtonGroup>
+        </ButtonToolbar>
+        {returnIsUS()?<UnitedStatesChart setCountryHover={setCountryHover} setCountryClick={setCountryClick} setCountryCode={setCode}/>:<MapChart setCountryHover={setCountryHover} setCountryClick={setCountryClick} setCountryCode={setCode} isUSA={setIsUs}/>}
+        {countryHover}
       </div>
       <div className="right w50">
         {"process data from "+countryCode}
+        {'\n'+countryClick}
       </div>
     </div>
   );
