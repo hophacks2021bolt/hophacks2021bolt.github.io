@@ -31,7 +31,7 @@ const UnitedStatesChart = ({ setCountryHover, setCountryClick, setCountryCode })
 
                   onClick={() => {
                     const { name } = geo.properties;
-                    setCountryClick(`United States: ${name} click`);
+                    setCountryClick(`${name}`);
                     setCountryCode("USA")
                   }}
 

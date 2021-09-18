@@ -32,7 +32,7 @@ const MapChart = ({ setCountryHover, setCountryClick, setCountryCode, isUSA}) =>
 
                   onClick={() => {
                     const { NAME, ISO_A3 } = geo.properties;
-                    setCountryClick(`${NAME} click`);
+                    setCountryClick(`${NAME}`);
                     setCountryCode(`${ISO_A3}`)
                     isUSA(`${ISO_A3}`==="USA")
                   }}
