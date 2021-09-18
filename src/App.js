@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {Home} from './pages';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
