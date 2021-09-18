@@ -2,27 +2,28 @@ import React, { useState } from "react"
 import Carousel from "react-bootstrap/Carousel";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import {Row, Col} from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import "./Survey.css";
 
 
 function Survey(){
     const [questionNum, setQuestionNum] = useState(0);
-    const [country, setCountry] = useState("US")
+    const [country, setCountry] = useState("N/A")
     const [usState, setusState] = useState("N/A")
-    const [numPeople, setNumPeople] = useState(4)
-    const [squareFootage, setSquareFootage] = useState(2000)
-    const [hoursAC, setHoursAC] = useState(7)
-    const [electricWaterHeater, setElectricWaterHeater] = useState(1)
-    const [numFridges, setNumFridges] = useState(1)
-    const [hoursLargeKitchenApplicances, setHoursLargeKitchenAppliances] = useState(3)
-    const [hoursSmallKitchenApplicances, setHoursSmallKitchenAppliances] = useState(3)
-    const [loadsWashingPerWeek, setLoadsWashingPerWeek] = useState(3)
-    const [loadsDryingPerWeek, setLoadsDryingPerWeek] = useState(3)
-    const [hoursDishwasherPerWeek, setHoursDishwasherPerWeek] = useState(9)
-    const [hoursBathroomElectronicsPerDay, setHoursBathroomElectronicsPerDay] = useState(3)
-    const [hoursComputerPerDay, setHoursComputerPerDay] = useState(9)
-    const [hoursTVPerDay, setHoursTVPerDay] = useState(3)
+    const [numPeople, setNumPeople] = useState(0)
+    const [squareFootage, setSquareFootage] = useState(0)
+    const [hoursAC, setHoursAC] = useState(0)
+    const [electricWaterHeater, setElectricWaterHeater] = useState(0)
+    const [numFridges, setNumFridges] = useState(0)
+    const [hoursLargeKitchenApplicances, setHoursLargeKitchenAppliances] = useState(0)
+    const [hoursSmallKitchenApplicances, setHoursSmallKitchenAppliances] = useState(0)
+    const [loadsWashingPerWeek, setLoadsWashingPerWeek] = useState(0)
+    const [loadsDryingPerWeek, setLoadsDryingPerWeek] = useState(0)
+    const [hoursDishwasherPerWeek, setHoursDishwasherPerWeek] = useState(0)
+    const [hoursBathroomElectronicsPerDay, setHoursBathroomElectronicsPerDay] = useState(0)
+    const [hoursComputerPerDay, setHoursComputerPerDay] = useState(0)
+    const [hoursTVPerDay, setHoursTVPerDay] = useState(0)
     const [smartHome, setSmartHome] = useState(0)
     const [hoursNECPerDay, sethoursNECPerDay] = useState(0)
     const [isUS, setIsUs] = useState(false)
@@ -48,15 +49,16 @@ function Survey(){
     }
 
     return (
+      <div id="background">
         <div id="survey">
-            <Carousel activeIndex={questionNum} indicators={false} controls={false}>
+            <Carousel id="carousel" activeIndex={questionNum} indicators={false} controls={false}>
                 <Carousel.Item>
                     <Form.Group className="questionDiv" controlId="formBasicDropdown">
                         <Form.Label>1. Please select your country</Form.Label>
                         <Form.Select type="select" onChange={(e) => { setCountry(e.target.value); if(e.target.value == "USA"){setIsUs(true)}; }} value={country}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
-      <option value="USA">United States of America</option>                      
-      <option value="AFG">Afghanistan</option>
+                            <option value="N/A"> Prefer Not to Answer</option>
+                            <option value="USA">United States of America</option>
+                            <option value="AFG">Afghanistan</option>
                             <option value="ALB">Albania</option>
                             <option value="DZA">Algeria</option>
                             <option value="ASM">American Samoa</option>
@@ -249,7 +251,7 @@ function Survey(){
                           <div className="ml-3 mt-3">
                             <Form.Label> a. Please select your state </Form.Label>
                           <Form.Select type="select" onChange={(e) => { setusState(e.target.value) }} value={usState}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                           	<option value="AL">Alabama</option>
 	<option value="AK">Alaska</option>
 	<option value="AZ">Arizona</option>
@@ -299,8 +301,8 @@ function Survey(){
 	<option value="VA">Virginia</option>
 	<option value="WA">Washington</option>
 	<option value="WV">West Virginia</option>
-	<option value="WI">Wisconsin</option>
-	<option value="WY">Wyoming</option>
+	     <option value="WI">Wisconsin</option>
+                              <option value="WY">Wyoming</option>
                           </Form.Select>
                           </div>
 
@@ -311,7 +313,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 2. How many people live in your household? </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setNumPeople(e.target.value) }} value={numPeople}>
-      <option value="0" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -326,7 +328,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 2. What is the square footage of your home? </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setNumPeople(e.target.value) }} value={numPeople}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>
                             <option value="1"> &lt;1,000 </option>
                             <option value="2">1,000-1,500</option>
                             <option value="3">1,500-2,000</option>
@@ -340,7 +342,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 3. How many hours per day does your AC run? </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setHoursAC(e.target.value) }} value={hoursAC}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>
                             <option value="1"> 0 </option>
                             <option value="2"> 1-4 </option>
                             <option value="3"> 5-10 </option>
@@ -355,7 +357,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 4. Do you have an electric water heater? </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setElectricWaterHeater(e.target.value) }} value={electricWaterHeater}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>
                             <option value="1"> Yes </option>
                             <option value="2"> No</option>
                         </Form.Select>
@@ -365,7 +367,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 5. How many fridges/ freezers are in your home? </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setNumFridges(e.target.value) }} value={numFridges}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>
                             <option value="1"> 0 </option>
                             <option value="2"> 1</option>
                             <option value="3"> 2</option>
@@ -377,7 +379,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 6. How many cumulative hours per day are large kitchen appliances used (Oven, Stove, Hob, etc.) </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setHoursLargeKitchenAppliances(e.target.value) }} value={hoursLargeKitchenApplicances}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>
                             <option value="1"> 0 </option>
                             <option value="2"> 1</option>
                             <option value="3"> 2</option>
@@ -389,7 +391,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 7. How many cumulative hours per day are small kitchen appliances used (Microwave, Blender, etc.) </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setHoursSmallKitchenAppliances(e.target.value) }} value={hoursSmallKitchenApplicances}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1</option>
                             <option value="3"> 2</option>
@@ -401,7 +403,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 8. How many washing machine loads are done per week?</Form.Label>
                         <Form.Select type="select" onChange={(e) => { setLoadsWashingPerWeek(e.target.value) }} value={loadsWashingPerWeek}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1-2</option>
                             <option value="3"> 3-4</option>
@@ -414,7 +416,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 9. How many dryer loads are done per week?</Form.Label>
                         <Form.Select type="select" onChange={(e) => { setLoadsDryingPerWeek(e.target.value) }} value={loadsDryingPerWeek}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1-2</option>
                             <option value="3"> 3-4</option>
@@ -427,7 +429,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 10. How many hours is the dishwasher running each week?</Form.Label>
                         <Form.Select type="select" onChange={(e) => { setHoursDishwasherPerWeek(e.target.value) }} value={hoursDishwasherPerWeek}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1-2</option>
                             <option value="3"> 3-4</option>
@@ -440,7 +442,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 11.How many hours per day are heavy bathroom electronics used (Hair dryer, Curling Iron, Clothing Iron, etc.)</Form.Label>
                         <Form.Select type="select" onChange={(e) => { setHoursBathroomElectronicsPerDay(e.target.value) }} value={hoursBathroomElectronicsPerDay}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1-2</option>
                             <option value="3"> 3-4</option>
@@ -453,7 +455,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 12. How many hours per day do you use laptops or desktop computers? </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setHoursComputerPerDay(e.target.value) }} value={hoursComputerPerDay}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1-2</option>
                             <option value="3"> 3-4</option>
@@ -466,7 +468,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 13. How many hours per day do you watch TV?</Form.Label>
                         <Form.Select type="select" onChange={(e) => { setHoursTVPerDay(e.target.value) }} value={hoursTVPerDay}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1-2</option>
                             <option value="3"> 3-4</option>
@@ -479,7 +481,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 14. Do you use a smart home system?</Form.Label>
                         <Form.Select type="select" onChange={(e) => { setSmartHome(e.target.value) }} value={smartHome}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1-2</option>
                             <option value="3"> 3-4</option>
@@ -492,7 +494,7 @@ function Survey(){
                     <Form.Group className="questionDiv" controlId="formNumber">
                         <Form.Label> 15. How many hours per day do you use other electronics (game console, DVD player, sound system)?</Form.Label>
                         <Form.Select type="select" onChange={(e) => { sethoursNECPerDay(e.target.value) }} value={hoursNECPerDay}>
-      <option value="N/A" selected> Prefer Not to Answer</option>                    
+                            <option value="0"> Prefer Not to Answer</option>                    
                             <option value="1"> 0 </option>
                             <option value="2"> 1-2</option>
                             <option value="3"> 3-4</option>
@@ -501,22 +503,21 @@ function Survey(){
                         </Form.Select>
                     </Form.Group>
                 </Carousel.Item>
-                <Carousel.Item>
-                </Carousel.Item>
             </Carousel>
             <Row>
                 <Col className="controls">
-                    <Button onClick={handlePrev} disabled={canGoBack()}>
+                    <Button className="button" onClick={handlePrev} disabled={canGoBack()}>
                         Previous
                     </Button>
                 </Col>
                 <Col className="controls">
-                    <Button onClick={handleNext} disabled={canGoNext()}>
+                    <Button className="button" onClick={handleNext} disabled={canGoNext()}>
                         Next
                     </Button>
                 </Col>
             </Row>
         </div>
+      </div>
     );
 
 }
