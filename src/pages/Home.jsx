@@ -13,7 +13,7 @@ function Home() {
         <p id="description">a worldwide energy comparison tool</p>
         <div className="row">
           <div className="col" id="surveyDiv">
-            <Link>
+            <Link to="/survey">
               <Button className="button">Survey</Button>
             </Link>
           </div>
