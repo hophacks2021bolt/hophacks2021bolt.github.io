@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {Home, Survey} from './pages';
+import {Home, Survey, Dashboard} from './pages';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
