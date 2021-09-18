@@ -35,8 +35,8 @@ const MapChart = ({ setCountryContent, setCountryCode, isUSA}) => {
                   onClick={() => {
                     const { NAME, ISO_A3 } = geo.properties;
                     setCountryContent(`${NAME} click`);
-                    setCountryCode(`${ISO_A3} click`);
-                    isUSA(`${ISO_A3}`==="USA");
+                    setCountryCode(`${ISO_A3}`)
+                    isUSA(`${ISO_A3}`==="USA")
                   }}
 
                   style={{
