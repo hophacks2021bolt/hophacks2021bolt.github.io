@@ -1,8 +1,7 @@
 import React from "react";
 import '../App.css';
 import './Home.css'
-import Button from "react-bootstrap/Button";
-
+import {Button} from "react-bootstrap";
 
 function Home() {
   return (
@@ -11,10 +10,12 @@ function Home() {
       <div className="Splash-page">
         <h1 id="title">KiloWhat</h1>
         <p id="description">a worldwide energy comparison tool</p>
-        <div className="row-md-2">
-          <div className="col-6" id="surveyDiv">
+        <div className="row">
+          <div className="col" id="surveyDiv">
+            <Button className="button">Survey</Button>
           </div>
-          <div className="col-6" id="dashboardDiv">
+          <div className="col" id="dashboardDiv">
+            <Button className="button">Dashboard</Button>
           </div>
         </div>
       </div>
