@@ -41,17 +41,30 @@ function Survey(){
     }
 
     const canGoNext = () => {
-        return !(questionNum < 16)
+        return !(questionNum < 17)
     }
 
     const isCountryUS = () => {
         return country == "USA"
     }
 
+    const submit = () => {
+        return true
+    }
+
     return (
       <div id="background">
         <div id="survey">
             <Carousel id="carousel" activeIndex={questionNum} indicators={false} controls={false}>
+                <Carousel.Item>
+                <h1 className="mt-3"> Welcome to the Kilowhat survey!</h1>
+
+                <p> This survey will help you determine an estimate of your energy usage. You'll answer questions about your habits and home to figure out how many kilowatthours you use.</p>
+
+                <p> You'll answer 16 questions where you'll select an answer from a given set. Once you've answered a question, click next to see the next one. If you want to go back, click previous. Answer each question to the best of your knowledge, and make sure to read the question carefully to understand what it means.</p>
+                <p>If you don't want to answer a question, select Prefer Not to Answer as a choice. We'll do our best to estimate your energy usage nonetheless. Keep in mind that the more questions you don't answer, the less accurate your energy usage estimate will be</p>
+                
+                </Carousel.Item>
                 <Carousel.Item>
                     <Form.Group className="questionDiv" controlId="formBasicDropdown">
                         <Form.Label>1. Please select your country</Form.Label>
@@ -502,6 +515,16 @@ function Survey(){
                             <option value="5"> 7+</option>
                         </Form.Select>
                     </Form.Group>
+                </Carousel.Item>
+                <Carousel.Item>
+                 <h1 className="mt-3"> Submit? </h1>
+                 <p> You can always come back and submit again if you want to change your answers. </p>
+                 <Button className="button" onClick={submit}>Submit Now</Button>
+                </Carousel.Item>
+                <Carousel.Item>
+                 <h1 className="mt-3"> Submitted! </h1>
+                 Your energy usage is X.
+                 Click here to compare your energy usage with other countries.
                 </Carousel.Item>
             </Carousel>
             <Row>
