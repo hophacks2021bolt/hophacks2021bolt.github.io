@@ -20,17 +20,16 @@ function Dashboard() {
 
 
 
-
   return (
     
     <div className="dashboard">
       <div className="left w50">
-        {returnIsUS()?<Button className="button" onClick={setIsUs(false)}>Exit US</Button>:null}
+        {returnIsUS()?<Button className="button" onClick={() => {setIsUs(false)}}>Exit US</Button>:null}
         {returnIsUS()?<UnitedStatesChart setCountryContent={setCountry} setCountryCode={setCode}/>:<MapChart setCountryContent={setCountry} setCountryCode={setCode} isUSA={setIsUs}/>}
         {country}
-        {countryCode}
       </div>
       <div className="right w50">
+        {"process data from "+countryCode}
       </div>
     </div>
   );

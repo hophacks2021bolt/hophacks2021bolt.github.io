@@ -3,6 +3,7 @@
 }
 .right {
     float: right;
+    right: 0;
 }
 
 .w50 {
