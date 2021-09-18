@@ -2,7 +2,7 @@ import React from "react";
 import '../App.css';
 import './Home.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button, ButtonGroup, ButtonToolbar} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 function Home() {
   return (
