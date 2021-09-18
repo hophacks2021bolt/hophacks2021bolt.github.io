@@ -3,6 +3,7 @@ import '../App.css';
 import './Home.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from "react-bootstrap";
+import { Link, Router, BrowserRouter } from 'react-router-dom'
 
 function Home() {
   return (
@@ -14,11 +15,14 @@ function Home() {
         
         <div className="row">
           <div className="col" id="surveyDiv">
-            <Button className="button">Survey</Button>
-            
+            <Link>
+              <Button className="button">Survey</Button>
+            </Link>
           </div>
           <div className="col" id="dashboardDiv">
-            <Button className="button">Dashboard</Button>
+            <Link to="/dashboard">
+              <Button renderAs="button" className="button">Dashboard</Button>
+            </Link>
           </div>
         </div>
       </div>
