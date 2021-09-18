@@ -45,3 +45,15 @@
   box-shadow: none;
 
 }
+
+
+.dashboard {
+  background: linear-gradient(to bottom right,#38C57F,#1FBDA9);
+  color: #030D2E;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  font-family: 'Barlow';
+
+}
