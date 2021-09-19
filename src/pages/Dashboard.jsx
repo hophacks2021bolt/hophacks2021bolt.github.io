@@ -13,7 +13,7 @@ function Dashboard() {
     const [countryClick, setCountryClick] = useState("");
     const [isUS, setIsUs] = useState(false);
     const [countryCode, setCode] = useState("");
-    const [year, setYear] = useState(2020);
+    const [year, setYear] = useState(2019);
 
     const [countryEnergyPerCapita, setCountryEnergyPerCapita] = useState({});
     const [countryMostUsed, setCountryMostUsed] = useState({});
