@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import {Home, Survey, Dashboard, ChartComparison} from './pages';
+import {Home, Survey, Dashboard} from './pages';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,7 +14,6 @@ function App() {
           <Route path="/" exact component={() => <Home />} />
           <Route path="/survey" exact component={() => <Survey />} />
           <Route path="/dashboard" exact component={() => <Dashboard />} />
-          <Route path="/chart-comparison" exact component={() => <ChartComparison />} />
         </Switch>
       </Router>
     </div>
