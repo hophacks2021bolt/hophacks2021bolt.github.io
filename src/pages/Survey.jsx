@@ -14,6 +14,7 @@ function Survey(){
     const [numPeople, setNumPeople] = useState(0)
     const [squareFootage, setSquareFootage] = useState(0)
     const [hoursAC, setHoursAC] = useState(0)
+    const [hoursHeat, setHoursHeat] = useState(0)
     const [electricWaterHeater, setElectricWaterHeater] = useState(0)
     const [numFridges, setNumFridges] = useState(0)
     const [hoursLargeKitchenApplicances, setHoursLargeKitchenAppliances] = useState(0)
@@ -27,6 +28,7 @@ function Survey(){
     const [smartHome, setSmartHome] = useState(0)
     const [hoursNECPerDay, sethoursNECPerDay] = useState(0)
     const [isUS, setIsUs] = useState(false)
+    const [score, setScore] = useState(0)
 
     const handleNext = () => {
         setQuestionNum(questionNum+1);
@@ -41,7 +43,7 @@ function Survey(){
     }
 
     const canGoNext = () => {
-        return !(questionNum < 17)
+        return !(questionNum < 18)
     }
 
     const isCountryUS = () => {
@@ -49,11 +51,13 @@ function Survey(){
     }
 
     const submit = () => {
+      console.log("entered");
         localStorage.setItem("country", country);
         localStorage.setItem("usState", usState);
         localStorage.setItem("numPeople", numPeople);
         localStorage.setItem("squareFootage", squareFootage);
         localStorage.setItem("hoursAC", hoursAC);
+        localStorage.setItem("hoursHeat", hoursHeat);
         localStorage.setItem("electricWaterHeater", electricWaterHeater);
         localStorage.setItem("numFridges", numFridges);
         localStorage.setItem("hoursLargeKitchenApplicances", hoursLargeKitchenApplicances);
@@ -66,6 +70,37 @@ function Survey(){
         localStorage.setItem("hoursTVPerDay", hoursTVPerDay);
         localStorage.setItem("smartHome", smartHome);
         localStorage.setItem("hoursNECPerDay", hoursNECPerDay);
+
+        const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+           country : {
+      "Number in Household": numPeople,
+      "House Size": squareFootage,
+      "AC Use": hoursAC,
+      "Heating Use": hoursHeat,
+      "Electric Water Heater": electricWaterHeater,
+      "Fridges and Freezers": numFridges,
+      "Large Kitchen Appliances": hoursLargeKitchenApplicances,
+      "Small Kitchen Appliances": hoursSmallKitchenApplicances,
+      "Washing Machine Loads": loadsWashingPerWeek,
+      "Dryer Loads": loadsDryingPerWeek,
+      "Dishwasher": hoursDishwasherPerWeek,
+      "Bathroom Electronics": hoursBathroomElectronicsPerDay,
+      "Laptops and Desktops": hoursComputerPerDay,
+      "Television": hoursTVPerDay,
+      "Smart-home": smartHome,
+      "Other Electronics": hoursNECPerDay
+   }
+        })
+       };
+      console.log("Submitting");
+       fetch('http://3.15.202.246:8080/survey', requestOptions)
+        .then(response => response.json())
+        .then(data => setScore(data));
+      console.log("Submitted");
+      setQuestionNum(19);
     }
 
     return (
@@ -369,12 +404,27 @@ function Survey(){
                 </Carousel.Item>
                 <Carousel.Item>
                     <Form.Group className="questionDiv" controlId="formNumber">
-                        <Form.Label> 3. How many hours per day does your AC run? </Form.Label>
+                        <Form.Label> 3. How many hours per day does your AC run in the summer? </Form.Label>
                         <Form.Select type="select" onChange={(e) => { setHoursAC(e.target.value) }} value={hoursAC}>
                             <option value="0"> Prefer Not to Answer</option>
                             <option value="1"> 0 </option>
                             <option value="2"> 1-4 </option>
-                            <option value="3"> 5-10 </option>
+                            <option value="3"> 5-8 </option>
+                            <option value="4"> 9-12</option>
+                            <option value="5"> 13-16</option>
+                            <option value="6"> 17-20</option>
+                            <option value="7"> 21-24</option>
+                        </Form.Select>
+                    </Form.Group>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <Form.Group className="questionDiv" controlId="formNumber">
+                        <Form.Label> 3. How many hours per day does your heater run in the winter? </Form.Label>
+                        <Form.Select type="select" onChange={(e) => { setHoursHeat(e.target.value) }} value={hoursHeat}>
+                            <option value="0"> Prefer Not to Answer</option>
+                            <option value="1"> 0 </option>
+                            <option value="2"> 1-4 </option>
+                            <option value="3"> 5-8 </option>
                             <option value="4"> 9-12</option>
                             <option value="5"> 13-16</option>
                             <option value="6"> 17-20</option>
@@ -539,8 +589,7 @@ function Survey(){
                 </Carousel.Item>
                 <Carousel.Item>
                  <h1 className="mt-3"> Submitted! </h1>
-                 Your energy usage is X.
-                 Click here to compare your energy usage with other countries.
+                 Your energy usage is {(score/1000).toLocaleString(undefined,{ maximumFractionDigits: 2 })} kWH.
                 </Carousel.Item>
             </Carousel>
             <Row>

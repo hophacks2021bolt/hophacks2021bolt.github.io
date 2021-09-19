@@ -14,7 +14,7 @@ function ChartComparison(){
   const [isUS, setIsUs] = useState(false);
   const [countryCode, setCode] = useState("");
   const [clickedCountries, setClickedCountries] = useState([]);
-  
+
   function returnIsUS(){
       return isUS;
   }
@@ -47,7 +47,7 @@ function ChartComparison(){
     <Row>
         <Col id="dashboardDiv">
       <Row id="chart" className="mb-4">
-        {isStateBased()?<UnitedStatesChart setCountryContent={handleCountry} setCountryCode={setCode}/>:<MapChart setCountryContent={handleCountry} setCountryCode={setCode} isUSA={setIsUs}/>}
+        {isStateBased()?<UnitedStatesChart setCountryClick={handleCountry} setCountryCode={setCode}/>:<MapChart setCountryClick={handleCountry} setCountryCode={setCode} isUSA={setIsUs}/>}
       </Row>
         </Col>
         <Col xs={3}>
