@@ -49,7 +49,23 @@ function Survey(){
     }
 
     const submit = () => {
-        return true
+        localStorage.setItem("country", country);
+        localStorage.setItem("usState", usState);
+        localStorage.setItem("numPeople", numPeople);
+        localStorage.setItem("squareFootage", squareFootage);
+        localStorage.setItem("hoursAC", hoursAC);
+        localStorage.setItem("electricWaterHeater", electricWaterHeater);
+        localStorage.setItem("numFridges", numFridges);
+        localStorage.setItem("hoursLargeKitchenApplicances", hoursLargeKitchenApplicances);
+        localStorage.setItem("hoursSmallKitchenApplicances", hoursSmallKitchenApplicances);
+        localStorage.setItem("loadsWashingPerWeek", loadsWashingPerWeek);
+        localStorage.setItem("loadsDryingPerWeek", loadsDryingPerWeek);
+        localStorage.setItem("hoursDishwasherPerWeek", hoursDishwasherPerWeek);
+        localStorage.setItem("hoursBathroomElectronicsPerDay", hoursBathroomElectronicsPerDay);
+        localStorage.setItem("hoursComputerPerDay", hoursComputerPerDay);
+        localStorage.setItem("hoursTVPerDay", hoursTVPerDay);
+        localStorage.setItem("smartHome", smartHome);
+        localStorage.setItem("hoursNECPerDay", hoursNECPerDay);
     }
 
     return (

@@ -1,0 +1,14 @@
+#dashboardDiv {
+  height:75%;
+}
+
+#container {
+  margin: 0rem 3rem;
+  overflow: auto;
+  max-height: 100vh;
+}
+
+#chart {
+  height:40vh;
+  width: 50vw;
+}

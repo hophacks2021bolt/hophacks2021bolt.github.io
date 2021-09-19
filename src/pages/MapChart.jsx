@@ -9,11 +9,11 @@ import {
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-const MapChart = ({ setCountryContent, setCountryCode, isUSA}) => {
+const MapChart = ({ setCountryContent, setCountryCode, isUSA, width=800, height=600}) => {
   var content;
   return (
     <>
-      <ComposableMap data-tip="" projectionConfig={{ scale: 100 }}>
+      <ComposableMap data-tip="" project="geoMercator" width={width} height={height} projectionConfig={{ scale: 100 }}>
         <ZoomableGroup>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
