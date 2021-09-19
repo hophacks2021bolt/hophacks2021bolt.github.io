@@ -50,7 +50,7 @@ function Dashboard() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ country: countryCode, year: year })
         };
-        fetch('http://3.15.202.246:8080/energypercapita', requestOptions)
+        fetch('http://3.138.120.118:8080/energypercapita', requestOptions)
             .then(response => response.json())
             .then(data => setCountryEnergyPerCapita(data));
 
@@ -60,7 +60,7 @@ function Dashboard() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ country: countryCode, year: year })
         };
-        fetch('http://3.15.202.246:8080/mostusedenergy', requestOptions)
+        fetch('http://3.138.120.118:8080/mostusedenergy', requestOptions)
             .then(response => response.json())
             .then(data => setCountryMostUsed(data));
 
@@ -69,16 +69,16 @@ function Dashboard() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ country: countryCode, year: year })
         };
-        fetch('http://3.15.202.246:8080/renewableshare', requestOptions)
+        fetch('http://3.138.120.118:8080/renewableshare', requestOptions)
             .then(response => response.json())
             .then(data => setCountryRenewableShare(data));
-
+            
         requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ country: countryCode, year: year })
         };
-        fetch('http://3.15.202.246:8080/energytrends', requestOptions)
+        fetch('http://3.138.120.118:8080/energytrends', requestOptions)
             .then(response => response.json())
             .then(data => setCountryTrends(JSON.parse(data)));
 
@@ -87,7 +87,7 @@ function Dashboard() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ state: countryClick, year: year })
         };
-        fetch('http://3.15.202.246:8080/stateshareenergy', requestOptions)
+        fetch('http://3.138.120.118:8080/stateshareenergy', requestOptions)
             .then(response => response.json())
             .then(data => setStateShareEnergy(JSON.parse(data)));
 
@@ -96,7 +96,7 @@ function Dashboard() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ state: countryClick, year: year })
         };
-        fetch('http://3.15.202.246:8080/stateemissions', requestOptions)
+        fetch('http://3.138.120.118:8080/stateemissions', requestOptions)
             .then(response => response.json())
             .then(data => setStateEmissions(data));
 
@@ -105,7 +105,7 @@ function Dashboard() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ state: countryClick, year: year })
         };
-        fetch('http://3.15.202.246:8080/statesourceemissions', requestOptions)
+        fetch('http://3.138.120.118:8080/statesourceemissions', requestOptions)
             .then(response => response.json())
             .then(data => setStateSourceEmissions(data));
 
@@ -115,8 +115,10 @@ function Dashboard() {
 
 
     return (
+        
 
-        <div className="dashboard">
+        <div className="dashboard">            
+            
             <div className="left w50">
                 <ButtonToolbar>
                     <ButtonGroup>
