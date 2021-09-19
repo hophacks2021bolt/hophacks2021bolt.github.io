@@ -9,7 +9,7 @@ import './Dashboard.css'
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-const UnitedStatesChart = ({ setCountryHover, setCountryClick, setCountryCode, width=800, height=600}) => {
+const UnitedStatesChart = ({on_Click=null, setCountryHover, setCountryClick, setCountryCode, width, height}) => {
   var content;
   return (
     <ComposableMap projection="geoAlbersUsa" width={width} height={height}>
@@ -32,6 +32,7 @@ const UnitedStatesChart = ({ setCountryHover, setCountryClick, setCountryCode, w
                   onClick={() => {
                     const { name } = geo.properties;
                     setCountryClick(`${name}`);
+                    if(on_Click != null) on_Click();
                     setCountryCode("USA")
                   }}
 

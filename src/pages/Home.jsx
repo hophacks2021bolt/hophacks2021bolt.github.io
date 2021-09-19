@@ -12,12 +12,12 @@ function Home() {
         <h1 id="title">KiloWhat</h1>
         <p id="description">a worldwide energy comparison tool</p>
         <div className="row">
-          <div className="col" id="surveyDiv">
+          <div className="col">
             <Link to="/survey">
               <Button className="button">Survey</Button>
             </Link>
           </div>
-          <div className="col" id="dashboardDiv">
+          <div className="col">
             <Link to="/dashboard">
               <Button renderAs="button" className="button">Dashboard</Button>
             </Link>
