@@ -81,6 +81,7 @@ function Dashboard() {
         
         {allValid()
         ?
+                    
             returnIsUS()
             ?
                 <div>
@@ -117,6 +118,7 @@ function Dashboard() {
                 </div>
             : 
                 <div>
+                    {countryClick} in {year}
                     <h3>
                         Average per-capita energy usage in {countryClick}
                     </h3>
