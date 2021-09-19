@@ -9,7 +9,7 @@ import {
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-const MapChart = ({ setCountryHover, setCountryClick, setCountryCode, isUSA, width=800, height=600}) => {
+const MapChart = ({on_Click=null, setCountryHover, setCountryClick, setCountryCode, isUSA, width=800, height=600}) => {
   var content;
   return (
     <>
@@ -34,6 +34,7 @@ const MapChart = ({ setCountryHover, setCountryClick, setCountryCode, isUSA, wid
                     const { NAME, ISO_A3 } = geo.properties;
                     setCountryClick(`${NAME}`);
                     setCountryCode(`${ISO_A3}`)
+                    if(on_Click != null) on_Click();
                     isUSA(`${ISO_A3}`==="USA")
                   }}
 
