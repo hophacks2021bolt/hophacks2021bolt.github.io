@@ -21,7 +21,7 @@ function Dashboard() {
     const [countryTrends, setCountryTrends] = useState({});
 
     const [stateShareEnergy, setStateShareEnergy] = useState({});
-    const [stateEmissions, setStateEmissions] = useState({});
+    const [stateEmissions, setStateEmissions] = useState("");
     const [stateSourceEmissions, setStateSourceEmissions] = useState({});
     
     
@@ -85,16 +85,16 @@ function Dashboard() {
         requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ country: countryCode, year: year })
+            body: JSON.stringify({ state: countryClick, year: year })
         };
         fetch('http://3.15.202.246:8080/stateshareenergy', requestOptions)
             .then(response => response.json())
-            .then(data => setStateShareEnergy(data));
+            .then(data => setStateShareEnergy(JSON.parse(data)));
 
         requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ country: countryCode, year: year })
+            body: JSON.stringify({ state: countryClick, year: year })
         };
         fetch('http://3.15.202.246:8080/stateemissions', requestOptions)
             .then(response => response.json())
@@ -103,7 +103,7 @@ function Dashboard() {
         requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ country: countryCode, year: year })
+            body: JSON.stringify({ state: countryClick, year: year })
         };
         fetch('http://3.15.202.246:8080/statesourceemissions', requestOptions)
             .then(response => response.json())
@@ -131,7 +131,7 @@ function Dashboard() {
                     ?
                     <Form>
                         <Form.Select type="select" onChange={(e) => { setYear(e.target.value); getStuff() }} value={year}>
-                            {[...Array(31).keys()].map(i => (
+                            {[...Array(30).keys()].map(i => (
 
                                 <option value={i + 1990}>{i + 1990}</option>
 
@@ -142,9 +142,9 @@ function Dashboard() {
                     :
                     <Form>
                         <Form.Select type="select" onChange={(e) => { setYear(e.target.value); getStuff() }} value={year}>
-                            {[...Array(121).keys()].map(i => (
+                            {[...Array(30).keys()].map(i => (
 
-                                <option value={i + 1900}>{i + 1900}</option>
+                                <option value={i + 1990}>{i + 1990}</option>
 
                             ))}
                         </Form.Select>
@@ -170,50 +170,31 @@ function Dashboard() {
                                 % Energy per source in the state of {countryClick}
                             </h3>
                             <h4>
-                            Petroleum: {stateShareEnergy["Petroleum"]}
+                            <b>Petroleum:</b> {stateShareEnergy["Petroleum"]}
                             <br/>
-                            Hydro: {stateShareEnergy["Hydroelectric Conventional"]}
+                            <b>Hydro:</b> {stateShareEnergy["Hydroelectric Conventional"]}
                             <br/>
-                            Nuclear: {stateShareEnergy["Nuclear"]}
+                            <b>Nuclear:</b> {stateShareEnergy["Nuclear"]}
                             <br/>
-                            Natural Gas: {stateShareEnergy["Natural Gas"]}
+                            <b>Natural Gas:</b> {stateShareEnergy["Natural Gas"]}
                             <br/>
-                            Coal: {stateShareEnergy["Coal"]}
+                            <b>Coal:</b> {stateShareEnergy["Coal"]}
                             <br/>
-                            Geothermal: {stateShareEnergy["Geothermal"]}
+                            <b>Geothermal:</b> {stateShareEnergy["Geothermal"]}
                             <br/>
-                            Solar, Thermal, and Photovoltaic: {stateShareEnergy["Solar Thermal and Photovoltaic"]}
+                            <b>Solar, Thermal, and Photovoltaic:</b> {stateShareEnergy["Solar Thermal and Photovoltaic"]}
                             <br/>
-                            Wind: {stateShareEnergy["Wind"]}
+                            <b>Wind:</b> {stateShareEnergy["Wind"]}
                             </h4>
 
                             <h3>
                                 Metric tons of CO2 emissions per kWh in the state of {countryClick}
                             </h3>
                             <h4>
-                                {stateEmissions}
+                                {parseInt(stateEmissions)}
                             </h4>
 
-                            <h3>
-                                Metric tons of CO2 emissions per kWh per source in the state of {countryClick}
-                            </h3>
-                            <h4>
-                                Petroleum: {stateSourceEmissions["Petroleum"]}
-                                <br/>
-                                Hydro: {stateSourceEmissions["Hydroelectric Conventional"]}
-                                <br/>
-                                Nuclear: {stateSourceEmissions["Nuclear"]}
-                                <br/>
-                                Natural Gas: {stateSourceEmissions["Natural Gas"]}
-                                <br/>
-                                Coal: {stateSourceEmissions["Coal"]}
-                                <br/>
-                                Geothermal: {stateSourceEmissions["Geothermal"]}
-                                <br/>
-                                Solar, Thermal, and Photovoltaic: {stateSourceEmissions["Solar Thermal and Photovoltaic"]}
-                                <br/>
-                                Wind: {stateSourceEmissions["Wind"]}
-                            </h4>
+                            
 
                             US data
                         </div>
@@ -242,25 +223,25 @@ function Dashboard() {
                             </h4>
                             
                             <h3>
-                                Energy trends in {countryClick}
+                                Cumulative early usage in TW of {countryClick}
                             </h3>
                             <h4>
                                 
-                                Biofuel: {countryTrends["biofuel"]}
+                                <b>Biofuel:</b> {countryTrends["biofuel"]}
                                 <br/>
-                                Coal: {countryTrends["coal"]}
+                                <b>Coal:</b> {countryTrends["coal"]}
                                 <br/>
-                                Natural Gas: {countryTrends["gas"]}
+                                <b>Natural Gas:</b> {countryTrends["gas"]}
                                 <br/>
-                                Nuclear: {countryTrends["nuclear"]}
+                                <b>Nuclear:</b> {countryTrends["nuclear"]}
                                 <br/>
-                                Hydro: {countryTrends["hydro"]}
+                                <b>Hydro:</b> {countryTrends["hydro"]}
                                 <br/>
-                                Oil: {countryTrends["oil"]}
+                                <b>Oil:</b> {countryTrends["oil"]}
                                 <br/>
-                                Solar: {countryTrends["solar"]}
+                                <b>Solar:</b> {countryTrends["solar"]}
                                 <br/>
-                                Wind: {countryTrends["wind"]}
+                                <b>Wind:</b> {countryTrends["wind"]}
                             </h4>
 
                             non-US data
