@@ -9,10 +9,10 @@ import './Dashboard.css'
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-const UnitedStatesChart = ({ setCountryContent, setCountryCode }) => {
+const UnitedStatesChart = ({ setCountryHover, setCountryClick, setCountryCode, width=800, height=600}) => {
   var content;
   return (
-    <ComposableMap projection="geoAlbersUsa">
+    <ComposableMap projection="geoAlbersUsa" width={width} height={height}>
       <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (
@@ -22,16 +22,16 @@ const UnitedStatesChart = ({ setCountryContent, setCountryCode }) => {
                   onMouseEnter={() => {
                     const { name } = geo.properties;
                     content = `${name}`;
-                    setCountryContent("United States: "+content);
+                    setCountryHover("United States: "+content);
                     setCountryCode("USA")
                   }}
                   onMouseLeave={() => {
-                    setCountryContent("United States");
+                    setCountryHover("United States");
                   }}
 
                   onClick={() => {
                     const { name } = geo.properties;
-                    setCountryContent(`United States: ${name} click`);
+                    setCountryClick(`${name}`);
                     setCountryCode("USA")
                   }}
 
